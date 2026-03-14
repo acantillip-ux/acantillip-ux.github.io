@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>calculator 💌</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer>
+ 
+    document.addEventListener("DOMContentLoaded", () => {
+      const envelopes = document.querySelectorAll(".envelope");
+      const modal = document.getElementById("noteModal");
+      const modalText = document.getElementById("noteText");
+      const closeBtn = document.getElementById("closeModal");
+
+      envelopes.forEach(env => {
+        env.addEventListener("click", () => {
+          const note = env.getAttribute("data-note");
+          modalText.textContent = note;
+          modal.classList.add("show");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("show");
+      });
+    });
+  </script>
+
+  <style>
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      margin-top: 50px;
+    }
+
+    .envelope {
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.1);
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      background: #fff9c4;
+      color: #000;
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #000;
+      cursor: pointer;
+    }
+
+    #noteText {
+      white-space: pre-line;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="timer.html">Timer</a>
+    <a href="note.html" class="active">Notes</a>
+  </nav>
+
+  <section class="content fade-in">
+    <h1>A letter for a PREND?</h1>
+    <p> . start ka sa pinaka unang enve WHHAHAHAHAHA, hati hati yan sha kasi hindi kasya sa isang enve hehehhehe </p>
+
+    <div class="notes-grid">
+      <img src="envelope.png" class="envelope" data-note="To my dearest, Peachy 
+      Currently mag ka call tayo ngaun WHAHAHAHAHA and parang I dunno parang nagtatampo ka or smth kasi ang tahimik mo.
+And I just want to say na AYY HINDI PALA, ANG CUTE NG TAWA MO NAKAKAINIS oky balik na, so ayonn na nga, i just want to say na everything has been better since you. I don't even know what words should i use to explain how thankful I am to have you.  
+
+ " alt="Note 1" />
+      <img src="envelope.png" class="envelope" data-note="Ever since you came to my life, things just felt lighter, warmer and brighter. Pati mga simple things, nagiging special kapag kasama ka WHHAHAHAHHA. You have this way of making me smile na kahit maiisip lang kita bigla nalang ako napapangiti (lahjet to) kaya nga minsan inaasar ako nila luey kasi nga raw nangiti na lang ako sa isang sulok, mukha raw akong tanga. You make my days feel different. When i'm tired, stressed, or dealing with a lot of things, talking to you makes it all dissapear. Yung boses mo like WAHHHHHH pahinga ko boses mo lahjet. 
+
+" alt="Note 2" />
+      <img src="envelope.png" class="envelope" data-note="And ayon somewhere along the way, you have became someone very special to me. I dunno kamo kung kelan pero bigla nalang talaga di ko nakaya na hindi ka makausap feeling ko hindi kumppleto araw ko kapag hindi kita nakakausap. Kaya mas ginanahan ako gumising eh kasi I know there is someone na lovee na love ka kwentuhan ako. It's  strange nga rin eh how can someone slowly become such a big part of your life without you planning it. But that's exactly what happened with you." alt="Note 3" />
+      <img src="envelope.png" class="envelope" data-note="I really didn't not expect na merong someone na ibibigay si lord na tulad mo eh WAHHAHAHAHHA. Wala talaga sa plan ma inlove eh dumating ka edi ayon WHAHAHAHAHHAAH. Pero syempre hindi naman puro happy happy lang yan eh, syempre meron ding times na nagiging seryus dibaa pero shempre dahil dun mas tumibay ung connections natin mas naindtindihan natin ang isa't isa dahil sa mga times na yon. We showed each other our deepest scars, the parts we hide usually hide from the world, and instead of walking away, we stayed." alt="Note 4" />
+       <img src="envelope.png" class="envelope" data-note=" and that means more than anything, because it showed me that what we have isn't just about the happy moments, but also about accepting each others's past. " alt="Note 5" />
+       <img src="envelope.png" class="envelope" data-note="Now, im ready leigh like suree na suree na suree na suree na ko and I don't want us na hanggang 'FREIND' lang  kaya if would allow me, I want to continue this story with you not as friends opkors but as husband and wife (ayu) ayaw mo? edi wag. I want to know more about you,I want understand u more, laugh with you more, chikahan with you more, late night calls with you more, and be there for you no matter what." alt="Note 6" />
+       <img src="envelope.png" class="envelope" data-note="Leigh, Will you be my girlfriend?" alt="Note 7" />
+    </div>
+  </section>
+
+  <div id="noteModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close-btn">&times;</span>
+      <p id="noteText"></p>
+    </div>
+  </div>
+
+  
+</body>
+</html>
